@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View All Students</title>
+		<div th:replace="fragments/header"></div>
+		<div th:replace="fragments/fragment :: head"></div>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" ></link>
+		<link rel="stylesheet" type="text/css" href="/DataTables/datatables.css"></link>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+		<script>
+		$(document).ready(function() {
+			$('#allStudents').DataTable({
+			});
+		});
+		</script>
+		
+		
+	</head>
+    <body>
+        <br></br>
+        
+        <br></br>
+        <table class="table table-bordered table-striped dt-responsive nowrap" id="allStudents">
+        		<thead>
+        			<tr>
+        				<th class="text-center">No</th>
+        				<th class="text-center">NPM</th>
+        				<th class="text-center">Name</th>
+        				<th class="text-center">GPA</th>
+        				<th class="text-center">Cumlaude</th>
+        				<th class="text-center">Delete</th>
+        				<th class="text-center">Update</th>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr th:each="student,iterationStatus: ${students}" th:class="${iterationStatus.odd}? 'odd'">
+    					<td th:text="${iterationStatus.count}">No. 1</td>
+				       	<td th:text="${student.npm}">Student NPM</td>
+				       	<td th:text="${student.name}">Student Name</td>
+				       	<td th:text="${student.gpa}">Student GPA</td>
+				       	<td th:if="${student.gpa>=3.49}">Cum Laude!</td>
+				       	<td th:unless="${student.gpa>=3.49}">Sangat Memuaskan!</td>
+				    	<td><a th:href="'/student/delete/' + ${student.npm}" > Delete Data</a></td>
+				        <td><a th:href="'/student/update/' + ${student.npm}" > Update Data</a></td>
+	    			</tr>
+        		</tbody>
+        </table>
+    </body>
+    <br></br>
+    
+    <div th:replace="fragments/footer"></div>
+</html>

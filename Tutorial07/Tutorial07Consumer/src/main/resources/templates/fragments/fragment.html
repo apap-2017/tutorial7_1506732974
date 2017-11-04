@@ -1,0 +1,31 @@
+<!DOCTYPE   html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<head>
+	<div th:switch="${#httpServletRequest.requestURI}">
+    	<div class="jumbotron">  		
+            <h1 th:case="'/'">Welcome to Tutorial 6 APAP!</h1>
+            <h1 th:case="'/student/viewall'">View All Students</h1>
+            <h1 th:case="'/student/add'">Add Student</h1>
+            <h1 th:case="'/student/update/' + ${npm}">Update Student</h1>
+            <h1 th:case="'/student/view/' + ${npm}">View Student</h1>
+            <h1 th:case="'/student/delete/' + ${npm}">Student Deleted</h1>   
+            <h1 th:case="'/course/view/' + ${id_course}">View Course</h1>
+    	</div>
+    
+    </div></head>
+</head>
+<body>
+	<div th:fragment="header">
+		<ul>
+			<li><a href="/"> Home </a></li>
+			<li><a href="/student/viewall"> Daftar Mahasiswa </a></li>
+			<li><a href="/student/add"> Menambah Mahasiswa </a></li>
+		</ul>
+	</div>
+	<div th:fragment="footer">
+		<hr />
+		<h4>Mata Kuliah APAP</h4>
+	</div>
+</body>
+</html>
