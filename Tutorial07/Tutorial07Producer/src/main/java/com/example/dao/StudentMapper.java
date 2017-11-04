@@ -40,6 +40,9 @@ public interface StudentMapper
     })
     List<StudentModel> selectAllStudents ();
 
+    //@Select("select npm, name, gpa from student")
+    //List<StudentModel> selectAllStudents ();
+    
     @Insert("INSERT INTO student (npm, name, gpa) VALUES (#{npm}, #{name}, #{gpa})")
     void addStudent (StudentModel student);
     
