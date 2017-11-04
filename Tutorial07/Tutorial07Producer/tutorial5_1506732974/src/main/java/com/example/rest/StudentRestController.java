@@ -1,5 +1,6 @@
 package com.example.rest;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,4 +22,9 @@ public class StudentRestController {
 		return student;
 	}
 	
+	@RequestMapping("/student/viewall")
+	public List<StudentModel> viewAll() {
+		List<StudentModel> students = studentService.selectAllStudents();
+		return students;
+	}
 }
